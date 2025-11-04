@@ -4,27 +4,27 @@ public class Combat {
         System.out.println("-----------------------------------");
 
         while(player.isAlive() && enemy.isAlive()) {
-            enemy.health -= player.damage;
-            System.out.println(player.name + " zadaje " + player.damage + " obrażeń " + enemy.name);
+            enemy.takeDamage(player.getDamage());
+            System.out.println(player.getName() + " zadaje " + player.getDamage() + " obrażeń " + enemy.getName());
 
             if(!enemy.isAlive()) {
                 System.out.println("Przeciwnik pokonany");
                 break;
             }
 
-            player.health -= enemy.damage;
-            System.out.println(enemy.name + " zadaje " + enemy.damage + " obrażeń " + player.name);
+            player.takeDamage(enemy.getDamage());
+            System.out.println(enemy.getName() + " zadaje " + enemy.getDamage() + " obrażeń " + player.getName());
 
-            System.out.println(player.name + "=" + player.health + "HP | "
-                    + enemy.name + "=" + enemy.health + "HP");
+            System.out.println(player.getName() + "=" + player.getHealth() + "HP | "
+                    + enemy.getName() + "=" + enemy.getHealth() + "HP");
 
             System.out.println("-----------------------------------");
         }
 
         if(player.isAlive()) {
-            System.out.println(player.name + " wygral walke");
+            System.out.println(player.getName() + " wygral walke");
         } else {
-            System.out.println(enemy.name + " wygral walke");
+            System.out.println(enemy.getName() + " wygral walke");
         }
 
 

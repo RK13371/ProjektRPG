@@ -25,7 +25,7 @@ public class Main {
 
         Combat.fight(player,enemy);
 
-        System.out.println("Koniec walki");
+       
 
 
 

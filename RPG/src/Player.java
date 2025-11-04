@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Player {
 
-    String name;
-    int health;
-    int damage;
-    int characterClass;
+    private String name;
+    private int health;
+    private int damage;
+    private int characterClass;
 
     static final int Warrior = 1;
     static final int Archer = 2;
@@ -16,6 +16,7 @@ public class Player {
         this.characterClass = characterClass;
         setClass();
     }
+
 
     void setClass() {
         if(characterClass == 1) {
@@ -34,6 +35,7 @@ public class Player {
     }
 
 
+
     boolean isAlive() {
         return health > 0;
     }
@@ -42,6 +44,26 @@ public class Player {
         System.out.println("Imie postaci: " + name);
         System.out.println("Punkty życia: " + health);
         System.out.println("Punkty obrażeń: " + damage);
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void takeDamage(int amount) {
+        health -= amount;
+        if(health < 0) {
+            health = 0;
+        }
     }
 
 
