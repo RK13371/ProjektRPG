@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Wybierz klase postaci:");
         System.out.println("1. Wojownik (HP: 120, DMG: 30)");
         System.out.println("2. Łucznik (HP: 60, DMG: 35)");
-        System.out.println("3. Mag (HP: 70 , DMG: 40");
+        System.out.println("3. Mag (HP: 70 , DMG: 40)");
 
         int klasa = scanner.nextInt();
         scanner.nextLine();
