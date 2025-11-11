@@ -83,7 +83,12 @@ public class Player {
         }
     }
 
-    public void getXP(int pd) {
+    public void resetHealth() {
+        setHealth(100 + lvl * 10);
+    }
+
+    // OTRZYMYWANIE PUNKTÓW DOŚWIADCZENIA
+    public void addXP(int pd) {
         xp += pd;
         System.out.println(name + " zdobywa " + xp + " punktów doświadczenia");
 
@@ -92,6 +97,7 @@ public class Player {
         }
     }
 
+    // OTRZYMYWANIE POZIOMU
     public void levelUp() {
         xp -= xpUp;
         lvl++;

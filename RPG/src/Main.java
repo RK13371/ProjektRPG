@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 
 
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,20 +18,44 @@ public class Main {
         System.out.println("2. Łucznik (HP: 70, DMG: 35)");
 
         int klasa = scanner.nextInt();
+        scanner.nextLine();
 
         Player player = new Player(name, klasa);
         player.showInfo();
 
-        Enemy enemy = new Enemy("Goblin", 70, 10);
+        int runda = 1;
 
-        Combat.fight(player,enemy);
+        while(player.isAlive()) {
+            System.out.println("\n--- RUNDA " + runda + " ---");
 
-       
+            Enemy enemy = Enemy.randomEnemy(runda);
+            System.out.println("Na twojej drodze staje: " + enemy.getName());
+
+            Combat.fight(player, enemy);
+
+            if(!player.isAlive()) {
+                System.out.println("\n" + player.getName() + " został pokonany");
+                break;
+            }
+
+            System.out.println();
+            player.showInfo();
+
+            System.out.println("Czy chcesz przejść dalej? (t/n)");
+            String c = scanner.nextLine().toLowerCase();
+            if(c.equals("n")) {
+                player.showInfo();
+                break;
+            }
+
+            runda++;
+            player.resetHealth();
+        }
+
+        System.out.println("-----------");
+        System.out.println("Koniec gry");
 
 
-
+        scanner.close();
     }
-
-
-
 }
