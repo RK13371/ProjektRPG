@@ -14,13 +14,26 @@ public class Main {
         String name = scanner.nextLine();
 
         System.out.println("Wybierz klase postaci:");
-        System.out.println("1. Wojownik (HP: 120, DMG: 25)");
-        System.out.println("2. Łucznik (HP: 70, DMG: 35)");
+        System.out.println("1. Wojownik (HP: 120, DMG: 30)");
+        System.out.println("2. Łucznik (HP: 60, DMG: 35)");
+        System.out.println("3. Mag (HP: 70 , DMG: 40");
 
         int klasa = scanner.nextInt();
         scanner.nextLine();
 
-        Player player = new Player(name, klasa);
+        CharacterClass characterClass;
+
+        switch(klasa) {
+            case 1 -> characterClass = new Warrior(name);
+            case 2 -> characterClass = new Archer(name);
+            case 3 -> characterClass = new Mage(name);
+            default -> {
+                characterClass = new Warrior(name);
+            }
+        }
+
+
+        Player player = new Player(name, characterClass);
         player.showInfo();
 
         int runda = 1;

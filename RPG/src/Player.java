@@ -8,42 +8,24 @@ public class Player {
     private String name;
     private int health;
     private int damage;
-    private int characterClass;
+    private CharacterClass characterClass;
 
     private int lvl;
     private int xp;
     private int xpUp;
 
-    // KLASY POSTACI
-    static final int Warrior = 1;
-    static final int Archer = 2;
 
-
-    Player(String name, int characterClass) {
+    Player(String name, CharacterClass characterClass) {
         this.name = name;
         this.characterClass = characterClass;
+        this.health = characterClass.getBaseHealth();
+        this.damage = characterClass.getBaseDamage();
+
         this.lvl = 1;
         this.xp = 0;
         this.xpUp = 100;
-        setClass();
     }
 
-    // USTAWIANIE KLAS
-    void setClass() {
-        if(characterClass == 1) {
-            health = 120;
-            damage = 25;
-        }
-        else if(characterClass == 2) {
-            health = 70;
-            damage = 35;
-        }
-        else {
-            health = 100;
-            damage = 20;
-        }
-
-    }
 
     // STATYSTYKI
     public void showInfo() {
@@ -72,7 +54,8 @@ public class Player {
     // LOSOWANIE WARTOŚCI OBRAZEŃ
     public int getDamageValue() {
         int randomDamageValue = random.nextInt(11) - 5;
-        return damage + randomDamageValue;
+        int baseDamage = damage + randomDamageValue;
+        return characterClass.specialAbility(baseDamage);
     }
 
     // OTRZYMYWANIE OBRAZEŃ
@@ -84,7 +67,7 @@ public class Player {
     }
 
     public void resetHealth() {
-        setHealth(100 + lvl * 10);
+        setHealth(characterClass.getBaseHealth() + lvl * 10);
     }
 
     // OTRZYMYWANIE PUNKTÓW DOŚWIADCZENIA
