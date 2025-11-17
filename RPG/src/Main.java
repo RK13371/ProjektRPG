@@ -54,12 +54,23 @@ public class Main {
             System.out.println();
             player.showInfo();
 
-            System.out.println("Czy chcesz przejść dalej? (t/n)");
-            String c = scanner.nextLine().toLowerCase();
+            String c = "";
+
+
+            while(!c.equals("t") && !c.equals("n")) {
+                System.out.println("Czy chcesz przejść dalej? (t/n)");
+                c = scanner.nextLine().toLowerCase();
+
+                if(!c.equals("t") && !c.equals("n")) {
+                    continue;
+                }
+            }
+
             if(c.equals("n")) {
                 player.showInfo();
                 break;
             }
+
 
             runda++;
             player.resetHealth();

@@ -14,6 +14,8 @@ public class Player {
     private int xp;
     private int xpUp;
 
+    private int attackCount = 0;
+
 
     Player(String name, CharacterClass characterClass) {
         this.name = name;
@@ -36,14 +38,25 @@ public class Player {
         System.out.println("Punkty obrażeń: " + damage);
     }
 
+    public CharacterClass getCharacterClass() {
+        return characterClass;
+    }
 
-    public String getName() {return name;}
-    public int getHealth() {return health;}
-    public int getDamage() {return damage;}
-    public int getLvl() {return lvl;}
+    public String getName() { return name;}
 
-    public void setHealth(int health) {this.health = health;}
-    public void setDamage(int damage) {this.damage = damage;}
+    public int getHealth() { return health; }
+
+    public int getDamage() { return damage; }
+
+    public int getLvl() { return lvl; }
+
+    public int getAttackCount() { return attackCount; }
+
+    public void setHealth(int health) { this.health = health; }
+
+    public void setDamage(int damage) { this.damage = damage; }
+
+    public void resetAttackCount() { attackCount = 0;}
 
 
     // SPRAWDZANIE CZY POSTAĆ/PRZECIWNIK ŻYJE
@@ -54,8 +67,13 @@ public class Player {
     // LOSOWANIE WARTOŚCI OBRAZEŃ
     public int getDamageValue() {
         int randomDamageValue = random.nextInt(11) - 5;
-        int baseDamage = damage + randomDamageValue;
-        return characterClass.specialAbility(baseDamage);
+        return damage + randomDamageValue;
+    }
+
+    public int specialAttack() {
+        int randomDamageValue = random.nextInt(11) - 5;
+        int base = damage + randomDamageValue;
+        return characterClass.specialAbility(base);
     }
 
     // OTRZYMYWANIE OBRAZEŃ
@@ -93,6 +111,14 @@ public class Player {
         System.out.println("HP=" + health + " | " + "DMG=" + damage);
     }
 
+
+    public void increaseAttackCount() {
+        attackCount++;
+    }
+
+    public boolean canAbility() {
+        return attackCount >= 3;
+    }
 
 
 }

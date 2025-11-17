@@ -24,6 +24,7 @@ public abstract class CharacterClass {
     }
 
     public int specialAbility(int baseDamage) {
-        return baseDamage;
+        return baseDamage + 20;
     }
+
 }

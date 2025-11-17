@@ -1,18 +1,62 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Combat {
 
+
     static void fight(Player player, Enemy enemy) {
+
+
         System.out.println("\nROZPOCZĘCIE WALKI");
         System.out.println(player.getName() + " VS " + enemy.getName());
         System.out.println();
 
         while(player.isAlive() && enemy.isAlive()) {
 
-            int playerDamage = player.getDamageValue();
             int enemyDamage = enemy.getDamageValue();
 
-            // ZADANIE OBRAZEN PRZECIWNIKOWI PRZEZ POSTAĆ
-            enemy.takeDamage(playerDamage);
-            System.out.println(player.getName() + " zadaje " + playerDamage + " obrażeń " + enemy.getName());
+            int choice = 0;
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("1. Atak");
+            System.out.println("2. Umiejętność specjalna");
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Zły wybór ");
+                scanner.nextLine();
+                continue;
+            }
+
+
+
+            switch(choice) {
+                case 1 -> {
+                    // ZADANIE OBRAZEN PRZECIWNIKOWI PRZEZ POSTAĆ
+                    int playerDamage = player.getDamageValue();
+                    enemy.takeDamage(playerDamage);
+                    System.out.println(player.getName() + " zadaje " + playerDamage + " obrażeń " + enemy.getName());
+
+                    player.increaseAttackCount();
+                }
+                case 2 -> {
+                    if(!player.canAbility()) {
+                        System.out.println("Możesz użyć umiejętności specjalnej za " +
+                                            (3-player.getAttackCount()) + " tury");
+                        continue;
+                    }
+
+                    int playerDamage = player.specialAttack();
+                    enemy.takeDamage(playerDamage);
+                    System.out.println(player.getName() + " używa umiejętnośći specjalnej, zadaje "
+                                      + playerDamage + " obrażeń " + enemy.getName());
+
+                    player.resetAttackCount();
+                }
+            }
+
+
+
 
             // SPRAWDZENIE CZY PRZECIWNIK NIE ŻYJE I WYJŚCIE Z PĘTLI
             if(!enemy.isAlive()) {
