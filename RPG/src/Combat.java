@@ -3,86 +3,56 @@ import java.util.Scanner;
 
 public class Combat {
 
+    private static final Scanner scanner = new Scanner(System.in);
 
     static void fight(Player player, Enemy enemy) {
 
 
-        System.out.println("\nROZPOCZĘCIE WALKI");
-        System.out.println(player.getName() + " VS " + enemy.getName());
-        System.out.println();
+        UI.fightStart(player, enemy);
 
         while(player.isAlive() && enemy.isAlive()) {
 
-            int enemyDamage = enemy.getDamageValue();
+            int choice = UI.chooseAction();
 
-            int choice = 0;
-
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("1. Atak");
-            System.out.println("2. Umiejętność specjalna");
-            try {
-                choice = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Zły wybór ");
-                scanner.nextLine();
-                continue;
+            if (choice == 1) {
+                int damage = player.getDamageValue();
+                enemy.takeDamage(damage);
+                UI.print(player.getName() + " zadaje " + damage + " obrażeń " + enemy.getName());
+                player.increaseAttackCount();
             }
-
-
-
-            switch(choice) {
-                case 1 -> {
-                    // ZADANIE OBRAZEN PRZECIWNIKOWI PRZEZ POSTAĆ
-                    int playerDamage = player.getDamageValue();
-                    enemy.takeDamage(playerDamage);
-                    System.out.println(player.getName() + " zadaje " + playerDamage + " obrażeń " + enemy.getName());
-
-                    player.increaseAttackCount();
+            else if (choice == 2) {
+                if(!player.canAbility()) {
+                    UI.printCooldown(player);
+                    continue;
                 }
-                case 2 -> {
-                    if(!player.canAbility()) {
-                        System.out.println("Możesz użyć umiejętności specjalnej za " +
-                                            (3-player.getAttackCount()) + " tury");
-                        continue;
-                    }
 
-                    int playerDamage = player.specialAttack();
-                    enemy.takeDamage(playerDamage);
-                    System.out.println(player.getName() + " używa umiejętnośći specjalnej, zadaje "
-                                      + playerDamage + " obrażeń " + enemy.getName());
+                int damage = player.specialAttack();
+                enemy.takeDamage(damage);
+                UI.print(player.getName() + " używa umiejętności specjalnej zadając "
+                        + damage + " obrażeń " + enemy.getName());
 
-                    player.resetAttackCount();
-                }
+                player.resetAttackCount();
             }
-
-
-
 
             // SPRAWDZENIE CZY PRZECIWNIK NIE ŻYJE I WYJŚCIE Z PĘTLI
             if(!enemy.isAlive()) {
-                System.out.println(player.getName() + "=" + player.getHealth() + "HP | "
-                        + enemy.getName() + "=" + enemy.getHealth() + "HP");
-
-                System.out.println("\nPrzeciwnik pokonany\n");
+                UI.showHP(player, enemy);
+                UI.print("\nPrzeciwnik pokonany!\n");
+                UI.wygrana(player);
+                player.addXP(50);
                 break;
             }
 
-            // ZADANIE OBRAŻEŃ POSTACI PRZEZ PRZECIWNIKA
+            int enemyDamage = enemy.getDamageValue();
             player.takeDamage(enemyDamage);
-            System.out.println(enemy.getName() + " zadaje " + enemyDamage + " obrażeń " + player.getName());
-
-            System.out.println(player.getName() + "=" + player.getHealth() + "HP | "
-                    + enemy.getName() + "=" + enemy.getHealth() + "HP");
+            UI.print(enemy.getName() + " zadaje " + enemyDamage + " obrażeń " + player.getName());
+            UI.showHP(player, enemy);
 
             System.out.println("-----------------------------------");
         }
 
-        // SPRAWDZENIE I WYPISANIE REZULTATU WALKI
-        if(player.isAlive()) {
-            System.out.println(player.getName() + " wygral walke");
-            player.addXP(50);
-        } else {
-            System.out.println(enemy.getName() + " wygral walke");
+        if(!player.isAlive()) {
+            UI.przegrana(enemy);
         }
 
 

@@ -10,10 +10,7 @@ public class Archer extends CharacterClass{
 
     @Override
     public int specialAbility(int baseDamage) {
-
-        double chance = random.nextDouble();
-        if(chance < 0.15) {
-            System.out.println(getName() + " zadaje obrażenia krytyczne");
+        if(random.nextDouble() < 0.15) {
             return baseDamage * 2;
         }
         return baseDamage;

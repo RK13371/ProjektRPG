@@ -9,13 +9,9 @@ public class Warrior extends CharacterClass{
 
     @Override
     public int specialAbility(int baseDamage) {
-
-        double chance = random.nextDouble();
-        if(chance < 0.25) {
-            System.out.println(getName() + " uderza mocnym atakiem");
+        if(random.nextDouble() < 0.25) {
             return baseDamage * 2;
         }
         return baseDamage;
     }
-
 }

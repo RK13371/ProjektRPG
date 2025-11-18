@@ -1,12 +1,12 @@
 public abstract class CharacterClass {
 
-    protected String name;
+    protected String className;
     protected int health;
     protected int damage;
 
 
-    public CharacterClass(String name, int health, int damage) {
-        this.name = name;
+    public CharacterClass(String className, int health, int damage) {
+        this.className = className;
         this.health = health;
         this.damage = damage;
     }
@@ -19,12 +19,12 @@ public abstract class CharacterClass {
         return damage;
     }
 
-    public String getName() {
-        return name;
+    public String getClassName() {
+        return className;
     }
 
     public int specialAbility(int baseDamage) {
-        return baseDamage + 20;
+        return baseDamage;
     }
 
 }
