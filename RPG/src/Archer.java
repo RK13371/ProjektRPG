@@ -2,10 +2,10 @@ import java.util.Random;
 
 public class Archer extends CharacterClass{
 
-    Random random = new Random();
+    private static final Random random = new Random();
 
-    public Archer(String name) {
-        super(name, 60, 35);
+    public Archer() {
+        super("Łucznik", 60, 35);
     }
 
     @Override

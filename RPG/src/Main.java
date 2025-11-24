@@ -24,11 +24,11 @@ public class Main {
         CharacterClass characterClass;
 
         switch(klasa) {
-            case 1 -> characterClass = new Warrior(name);
-            case 2 -> characterClass = new Archer(name);
-            case 3 -> characterClass = new Mage(name);
+            case 1 -> characterClass = new Warrior();
+            case 2 -> characterClass = new Archer();
+            case 3 -> characterClass = new Mage();
             default -> {
-                characterClass = new Warrior(name);
+                characterClass = new Warrior();
             }
         }
 

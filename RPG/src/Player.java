@@ -38,26 +38,79 @@ public class Player {
         System.out.println("Punkty obrażeń: " + damage);
     }
 
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public CharacterClass getCharacterClass() {
         return characterClass;
     }
 
-    public String getName() { return name;}
+    public void setCharacterClass(CharacterClass characterClass) {
+        this.characterClass = characterClass;
+    }
 
-    public int getHealth() { return health; }
+    public int getLvl() {
+        return lvl;
+    }
 
-    public int getDamage() { return damage; }
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
 
-    public int getLvl() { return lvl; }
+    public int getXp() {
+        return xp;
+    }
 
-    public int getAttackCount() { return attackCount; }
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
 
-    public void setHealth(int health) { this.health = health; }
+    public int getXpUp() {
+        return xpUp;
+    }
 
-    public void setDamage(int damage) { this.damage = damage; }
+    public void setXpUp(int xpUp) {
+        this.xpUp = xpUp;
+    }
 
-    public void resetAttackCount() { attackCount = 0;}
+    public int getAttackCount() {
+        return attackCount;
+    }
 
+    public void setAttackCount(int attackCount) {
+        this.attackCount = attackCount;
+    }
+
+    
 
     // SPRAWDZANIE CZY POSTAĆ/PRZECIWNIK ŻYJE
     boolean isAlive() {
@@ -82,6 +135,10 @@ public class Player {
         if(health < 0) {
             health = 0;
         }
+    }
+
+    public void resetAttackCount() {
+        attackCount = 0;
     }
 
     public void resetHealth() {

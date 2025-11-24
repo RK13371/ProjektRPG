@@ -1,10 +1,10 @@
 import java.util.Random;
 
 public class Warrior extends CharacterClass{
-    Random random = new Random();
+    private static final Random random = new Random();
 
-    public Warrior(String name) {
-        super(name, 120, 30);
+    public Warrior() {
+        super("Wojownik", 120, 30);
     }
 
     @Override

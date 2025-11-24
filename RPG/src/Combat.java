@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class Combat {
 
-    private static final Scanner scanner = new Scanner(System.in);
-
     static void fight(Player player, Enemy enemy) {
 
 
