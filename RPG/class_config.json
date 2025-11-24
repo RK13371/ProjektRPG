@@ -1,0 +1,17 @@
+{
+  "Wojownik": {
+    "health": 120,
+    "damage": 30,
+    "critChance": 0.25
+  },
+  "Łucznik": {
+    "health": 60,
+    "damage": 35,
+    "critChance": 0.15
+  },
+  "Mag": {
+  "health": 70,
+  "damage": 40,
+  "critChance": 0.3
+  }
+}

@@ -4,8 +4,8 @@ public class Archer extends CharacterClass{
 
     private static final Random random = new Random();
 
-    public Archer() {
-        super("Łucznik", 60, 35);
+    public Archer(ClassStats stats) {
+        super("Łucznik", stats.health, stats.damage);
     }
 
     @Override

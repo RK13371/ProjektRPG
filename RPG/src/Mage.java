@@ -4,8 +4,8 @@ public class Mage extends CharacterClass{
 
     private static final Random random = new Random();
 
-    public Mage() {
-        super("Mag", 70, 40);
+    public Mage(ClassStats stats) {
+        super("Mag", stats.health, stats.damage);
     }
 
     @Override

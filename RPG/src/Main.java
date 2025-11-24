@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -8,6 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
+
+        Map<String, ClassStats> stats = ConfigLoader.loadClassStats();
 
 
         System.out.print("Podaj imie gracza: ");
@@ -24,11 +27,11 @@ public class Main {
         CharacterClass characterClass;
 
         switch(klasa) {
-            case 1 -> characterClass = new Warrior();
-            case 2 -> characterClass = new Archer();
-            case 3 -> characterClass = new Mage();
+            case 1 -> characterClass = new Warrior(stats.get("Wojownik"));
+            case 2 -> characterClass = new Archer(stats.get("Łucznik"));
+            case 3 -> characterClass = new Mage(stats.get("Mag"));
             default -> {
-                characterClass = new Warrior();
+                characterClass = new Warrior(stats.get("Wojownik"));
             }
         }
 

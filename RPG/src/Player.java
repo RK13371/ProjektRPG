@@ -32,6 +32,7 @@ public class Player {
     // STATYSTYKI
     public void showInfo() {
         System.out.println("Imie postaci: " + name);
+        System.out.println("Klasa: " + characterClass.className);
         System.out.println("Poziom: " + lvl);
         System.out.println("Punkty doświadczenia: " + xp + "/" + xpUp);
         System.out.println("Punkty życia: " + health);
@@ -110,7 +111,7 @@ public class Player {
         this.attackCount = attackCount;
     }
 
-    
+
 
     // SPRAWDZANIE CZY POSTAĆ/PRZECIWNIK ŻYJE
     boolean isAlive() {
