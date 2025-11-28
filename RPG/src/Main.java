@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -9,37 +10,55 @@ public class Main {
     public static void main(String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
+        Player player = null;
+        int menuChoice = 0;
 
         Map<String, ClassStats> stats = ConfigLoader.loadClassStats();
 
-
-        System.out.print("Podaj imie gracza: ");
-        String name = scanner.nextLine();
-
-        System.out.println("Wybierz klase postaci:");
-        System.out.println("1. Wojownik (HP: 120, DMG: 30)");
-        System.out.println("2. Łucznik (HP: 60, DMG: 35)");
-        System.out.println("3. Mag (HP: 70 , DMG: 40)");
-
-        int klasa = scanner.nextInt();
+        System.out.println("1. Nowa gra");
+        System.out.println("2. Wczytaj grę");
+        menuChoice = scanner.nextInt();
         scanner.nextLine();
 
-        CharacterClass characterClass;
-
-        switch(klasa) {
-            case 1 -> characterClass = new Warrior(stats.get("Wojownik"));
-            case 2 -> characterClass = new Archer(stats.get("Łucznik"));
-            case 3 -> characterClass = new Mage(stats.get("Mag"));
-            default -> {
-                characterClass = new Warrior(stats.get("Wojownik"));
+        if(menuChoice == 2) {
+            player = SaveManager.loadPlayer();
+            if (player != null) {
+                System.out.println("Zapis gry wczytany");
+            } else {
+                System.out.println("Przejście do nowej gry");
             }
         }
+        if(player == null) {
 
+            System.out.print("Podaj imie gracza: ");
+            String name = scanner.nextLine();
 
-        Player player = new Player(name, characterClass);
-        player.showInfo();
+            System.out.println("Wybierz klase postaci:");
+            System.out.println("1. Wojownik (HP: 120, DMG: 30)");
+            System.out.println("2. Łucznik (HP: 60, DMG: 35)");
+            System.out.println("3. Mag (HP: 70 , DMG: 40)");
 
-        int runda = 1;
+            int klasa = scanner.nextInt();
+            scanner.nextLine();
+
+            CharacterClass characterClass;
+
+            switch(klasa) {
+                case 1 -> characterClass = new Warrior(stats.get("Wojownik"));
+                case 2 -> characterClass = new Archer(stats.get("Łucznik"));
+                case 3 -> characterClass = new Mage(stats.get("Mag"));
+                default -> {
+                    characterClass = new Warrior(stats.get("Wojownik"));
+                }
+            }
+
+            player = new Player(name, characterClass);
+            player.setRound(1);
+            player.showInfo();
+
+        }
+
+        int runda = player.getRound();
 
         while(player.isAlive()) {
             System.out.println("\n--- RUNDA " + runda + " ---");
@@ -57,9 +76,19 @@ public class Main {
             System.out.println();
             player.showInfo();
 
+            String saveChoice = "";
+
+            while(!saveChoice.equals("t") && !saveChoice.equals("n")) {
+                System.out.println("Zapisz gre (t/n)");
+                saveChoice = scanner.nextLine().trim().toLowerCase();
+            }
+
+            if(saveChoice.equals("t")) {
+                player.setRound(runda);
+                SaveManager.saveGame(player, runda);
+            }
+
             String c = "";
-
-
             while(!c.equals("t") && !c.equals("n")) {
                 System.out.println("Czy chcesz przejść dalej? (t/n)");
                 c = scanner.nextLine().toLowerCase();
@@ -76,6 +105,7 @@ public class Main {
 
 
             runda++;
+            player.setRound(runda);
             player.resetHealth();
         }
 
@@ -84,5 +114,12 @@ public class Main {
 
 
         scanner.close();
-    }
+
+        }
+
+
+
+
+
+
 }

@@ -13,6 +13,7 @@ public class Player {
     private int lvl;
     private int xp;
     private int xpUp;
+    private int round;
 
     private int attackCount = 0;
 
@@ -95,6 +96,15 @@ public class Player {
         this.xp = xp;
     }
 
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+
     public int getXpUp() {
         return xpUp;
     }
@@ -176,6 +186,11 @@ public class Player {
 
     public boolean canAbility() {
         return attackCount >= 3;
+    }
+
+    public void useItem(Item item) {
+        System.out.println("Używasz " + item.getName());
+        item.itemEffect(this);
     }
 
 
