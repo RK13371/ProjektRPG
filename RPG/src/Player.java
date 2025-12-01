@@ -17,6 +17,8 @@ public class Player {
 
     private int attackCount = 0;
 
+    private int gold = 0;
+
 
     Player(String name, CharacterClass characterClass) {
         this.name = name;
@@ -36,6 +38,7 @@ public class Player {
         System.out.println("Klasa: " + characterClass.className);
         System.out.println("Poziom: " + lvl);
         System.out.println("Punkty doświadczenia: " + xp + "/" + xpUp);
+        System.out.println("Złoto: " + gold);
         System.out.println("Punkty życia: " + health);
         System.out.println("Punkty obrażeń: " + damage);
     }
@@ -122,6 +125,25 @@ public class Player {
     }
 
 
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public void addGold(int amount) {
+        gold += amount;
+    }
+
+    public boolean spendGold(int amount) {
+        if (gold >= amount) {
+            gold -= amount;
+            return true;
+        }
+        return false;
+    }
 
     // SPRAWDZANIE CZY POSTAĆ/PRZECIWNIK ŻYJE
     boolean isAlive() {

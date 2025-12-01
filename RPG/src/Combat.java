@@ -38,6 +38,13 @@ public class Combat {
                 UI.print("\nPrzeciwnik pokonany!\n");
                 UI.wygrana(player);
                 player.addXP(50);
+
+                int gold = enemy.getType().getGold();
+                player.addGold(gold);
+                System.out.println("Zdobywasz " + gold + " złota");
+
+
+
                 break;
             }
 
@@ -52,6 +59,7 @@ public class Combat {
         if(!player.isAlive()) {
             UI.przegrana(enemy);
         }
+
 
 
 

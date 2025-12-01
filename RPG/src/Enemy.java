@@ -48,6 +48,10 @@ public class Enemy {
         return health;
     }
 
+    public EnemyType getType() {
+        return type;
+    }
+
     public int getDamageValue() {
         int randomDamageValue = random.nextInt(11) - 5;
         return damage + randomDamageValue;

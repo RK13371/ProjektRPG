@@ -76,11 +76,23 @@ public class Main {
             System.out.println();
             player.showInfo();
 
-            String saveChoice = "";
 
+            // SKLEP
+            String choiceShop = "";
+            while (!choiceShop.equals("t") && !choiceShop.equals("n")) {
+                System.out.println("Czy chcesz odwiedzić sklep? (t/n)");
+                choiceShop = scanner.nextLine().toLowerCase();
+            }
+
+            if(choiceShop.equals("t")) {
+                Shop.showShop(player);
+            }
+
+            // ZAPIS GRY
+            String saveChoice = "";
             while(!saveChoice.equals("t") && !saveChoice.equals("n")) {
                 System.out.println("Zapisz gre (t/n)");
-                saveChoice = scanner.nextLine().trim().toLowerCase();
+                saveChoice = scanner.nextLine().toLowerCase();
             }
 
             if(saveChoice.equals("t")) {
@@ -88,6 +100,8 @@ public class Main {
                 SaveManager.saveGame(player, runda);
             }
 
+
+            // KONTYUNOWANIE GRY LUB WYJŚCIE
             String c = "";
             while(!c.equals("t") && !c.equals("n")) {
                 System.out.println("Czy chcesz przejść dalej? (t/n)");

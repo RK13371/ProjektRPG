@@ -1,19 +1,21 @@
 public enum EnemyType {
 
-    GOBLIN("Goblin", 35, 15),
-    TROLL("Troll", 120, 25),
-    GRYF("Gryf", 220, 45);
+    GOBLIN("Goblin", 35, 15, 15),
+    TROLL("Troll", 120, 25, 30),
+    GRYF("Gryf", 220, 45, 60);
 
 
     private String name;
     private int health;
     private int damage;
+    private int gold;
 
 
-    EnemyType(String name, int health, int damage) {
+    EnemyType(String name, int health, int damage, int gold) {
         this.name = name;
         this.health = health;
         this.damage = damage;
+        this.gold = gold;
     }
 
     public String getName(){
@@ -26,6 +28,10 @@ public enum EnemyType {
 
     public int getDamage(){
         return damage;
+    }
+
+    public int getGold() {
+        return gold;
     }
 
 }
