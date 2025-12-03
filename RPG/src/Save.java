@@ -1,4 +1,5 @@
 import java.io.FileWriter;
+import java.util.Map;
 
 public class Save {
     public String playerName;
@@ -8,5 +9,7 @@ public class Save {
     public int health;
     public int attackCount;
     public int round;
+    public int gold;
+    public Map<String, Integer> inventory;
 
 }

@@ -15,6 +15,8 @@ public class SaveManager {
         save.health = player.getHealth();
         save.attackCount = player.getAttackCount();
         save.round = runda;
+        save.gold = player.getGold();
+        save.inventory = player.getInventory();
 
         try {
             Gson gson = new Gson();
@@ -66,6 +68,8 @@ public class SaveManager {
         player.setHealth(save.health);
         player.setAttackCount(save.attackCount);
         player.setRound(save.round);
+        player.setGold(save.gold);
+        player.setInventory(save.inventory);
 
         return player;
     }

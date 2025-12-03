@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -18,6 +20,8 @@ public class Player {
     private int attackCount = 0;
 
     private int gold = 0;
+
+    private Map<String, Integer> inventory = new HashMap<>();
 
 
     Player(String name, CharacterClass characterClass) {
@@ -214,6 +218,40 @@ public class Player {
         System.out.println("Używasz " + item.getName());
         item.itemEffect(this);
     }
+
+    public void addItemToInventory(String itemName) {
+        inventory.put(itemName, inventory.getOrDefault(itemName, 0) + 1);
+    }
+
+    public boolean hasItem(String itemName) {
+        return inventory.getOrDefault(itemName, 0) > 0;
+    }
+
+    public boolean useItemByName(String itemName) {
+        if(!hasItem(itemName)) return false;
+
+        Item item;
+        switch (itemName) {
+            case "Mikstura leczenia": item = new HealingPotion(); break;
+            case "Mikstura siły": item = new StrengthPotion(); break;
+            case "Mikstura szczęścia": item = new LuckPotion(); break;
+            default: return false;
+        }
+
+        useItem(item);
+        inventory.put(itemName, inventory.get(itemName) - 1);
+        if(inventory.get(itemName) <= 0) inventory.remove(itemName);
+        return true;
+    }
+
+    public Map<String, Integer> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Map<String, Integer> inventory) {
+        this.inventory = new HashMap<>(inventory);
+    }
+
 
 
 }

@@ -39,6 +39,24 @@ public class Combat {
                 UI.wygrana(player);
                 player.addXP(50);
 
+                double dropChance = player.getRandom().nextDouble();
+                if(dropChance < 0.25) {
+                    double itemType = player.getRandom().nextDouble();
+                    String itemName;
+                    if(itemType < 0.5) {
+                        itemName = "Mikstura leczenia";
+                    }
+                    else if(itemType < 0.8) {
+                        itemName = "Mikstura siły";
+                    }
+                    else {
+                        itemName = "Mikstura szczęścia";
+                    }
+
+                    player.addItemToInventory(itemName);
+                    UI.print("Z przeciwnika wypadło: " + itemName);
+                }
+
                 int gold = enemy.getType().getGold();
                 player.addGold(gold);
                 System.out.println("Zdobywasz " + gold + " złota");
