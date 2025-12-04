@@ -1,5 +1,4 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Combat {
 
@@ -12,12 +11,14 @@ public class Combat {
 
             int choice = UI.chooseAction();
 
+            // Zwykły atak
             if (choice == 1) {
                 int damage = player.getDamageValue();
                 enemy.takeDamage(damage);
                 UI.print(player.getName() + " zadaje " + damage + " obrażeń " + enemy.getName());
                 player.increaseAttackCount();
             }
+            // Specjalny atak
             else if (choice == 2) {
                 if(!player.canAbility()) {
                     UI.printCooldown(player);
@@ -30,6 +31,45 @@ public class Combat {
                         + damage + " obrażeń " + enemy.getName());
 
                 player.resetAttackCount();
+            } else if (choice == 3) {
+                // Sprawdzenie czy inv jest pusty
+                if(player.getInventory().isEmpty()) {
+                    UI.print("Nie posiadasz żadnych przedmiotów");
+                    continue;
+                }
+
+                // Utworzenie listy przedmiotów
+                Map<String, Integer> inv = player.getInventory();
+                List<String> items = new ArrayList<>(inv.keySet());
+
+                // Wyświetlenie ponumerowanej listy przedmiotów w inv
+                UI.print("EKWIPUNEK");
+                for(int i = 0; i < items.size(); i++) {
+                    String itemName = items.get(i);
+                    int n = inv.get(itemName);
+                    UI.print((i+1) + ". " + itemName + " (" + n + ")");
+                }
+                UI.print("0. Wyjdź");
+
+
+                // Wybór przedmiotu
+                int itemChoice = UI.getInput(0, items.size());
+
+                if(itemChoice == 0) {
+                    continue;
+                }
+
+
+                String chosenItem = items.get(itemChoice - 1);
+                boolean t = player.useItemByName(chosenItem);
+
+                if(!t) {
+                    UI.print("Nie użyto przedmiotu");
+                    continue;
+                }
+                // Użycie i usunięcie przedmiotu z inv
+                UI.print("Użyto: " + chosenItem);
+
             }
 
             // SPRAWDZENIE CZY PRZECIWNIK NIE ŻYJE I WYJŚCIE Z PĘTLI

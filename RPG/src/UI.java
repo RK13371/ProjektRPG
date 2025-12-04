@@ -36,7 +36,8 @@ public class UI {
     public static int chooseAction() {
         System.out.println("1. Atak");
         System.out.println("2. Umiejętność specjalna");
-        return getInput(1, 2);
+        System.out.println("3. Użyj przedmiotu");
+        return getInput(1, 3);
     }
 
     public static int getInput(int x, int y) {

@@ -88,6 +88,7 @@ public class Main {
                 Shop.showShop(player);
             }
 
+
             // ZAPIS GRY
             String saveChoice = "";
             while(!saveChoice.equals("t") && !saveChoice.equals("n")) {

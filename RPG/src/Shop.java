@@ -21,7 +21,7 @@ public class Shop {
                         break;
                     } else {
                         player.spendGold(cost);
-                        player.useItem(new HealingPotion());
+                        player.addItemToInventory("Mikstura leczenia");
                         UI.print("Zakupiono miksturę leczenia");
                     }
                     break;
@@ -33,7 +33,7 @@ public class Shop {
                         break;
                     } else {
                         player.spendGold(cost);
-                        player.useItem(new StrengthPotion());
+                        player.addItemToInventory("Mikstura siły");
                         UI.print("Zakupiono miksturę siły");
                     }
                     break;
@@ -45,7 +45,7 @@ public class Shop {
                         break;
                     } else {
                         player.spendGold(cost);
-                        player.useItem(new LuckPotion());
+                        player.addItemToInventory("Mikstura szczęścia");
                         UI.print("Zakupiono miksturę szczęścia");
                     }
                     break;
