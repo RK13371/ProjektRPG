@@ -11,12 +11,14 @@ public class Main {
 
         final Scanner scanner = new Scanner(System.in);
         Player player = null;
+        AutoSaveThread autosave = null;
         int menuChoice = 0;
 
         Map<String, ClassStats> stats = ConfigLoader.loadClassStats();
 
         System.out.println("1. Nowa gra");
         System.out.println("2. Wczytaj grę");
+
         menuChoice = scanner.nextInt();
         scanner.nextLine();
 
@@ -28,6 +30,7 @@ public class Main {
                 System.out.println("Przejście do nowej gry");
             }
         }
+
         if(player == null) {
 
             System.out.print("Podaj imie gracza: ");
@@ -54,9 +57,15 @@ public class Main {
 
             player = new Player(name, characterClass);
             player.setRound(1);
-            player.showInfo();
+
 
         }
+
+        autosave = new AutoSaveThread(player);
+        autosave.start();
+
+        player.showInfo();
+
 
         int runda = player.getRound();
 
@@ -68,8 +77,14 @@ public class Main {
 
             Combat.fight(player, enemy);
 
+            if(player.isAutosaved()) {
+                System.out.println("Automatyczny zapis wykonany");
+                player.setAutosaved(false);
+            }
+
             if(!player.isAlive()) {
                 System.out.println("\n" + player.getName() + " został pokonany");
+                if(autosave != null) autosave.stopAutosave();;
                 break;
             }
 
@@ -98,7 +113,7 @@ public class Main {
 
             if(saveChoice.equals("t")) {
                 player.setRound(runda);
-                SaveManager.saveGame(player, runda);
+                SaveManager.saveGame(player, runda, true);
             }
 
 
@@ -124,17 +139,17 @@ public class Main {
             player.resetHealth();
         }
 
+
         System.out.println("-----------");
         System.out.println("Koniec gry");
 
+        if(autosave != null) {
+            autosave.stopAutosave();
+        }
 
         scanner.close();
 
         }
-
-
-
-
 
 
 }

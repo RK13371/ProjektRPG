@@ -16,13 +16,12 @@ public class Player {
     private int xp;
     private int xpUp;
     private int round;
-
-    private int attackCount = 0;
-
     private int gold = 0;
+    private int attackCount = 0;
 
     private Map<String, Integer> inventory = new HashMap<>();
 
+    private boolean isAutosaved = false;
 
     Player(String name, CharacterClass characterClass) {
         this.name = name;
@@ -253,5 +252,11 @@ public class Player {
     }
 
 
+    public boolean isAutosaved() {
+        return isAutosaved;
+    }
 
+    public void setAutosaved(boolean autosaved) {
+        isAutosaved = autosaved;
+    }
 }

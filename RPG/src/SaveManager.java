@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.util.Map;
 
 public class SaveManager {
-    public static void saveGame(Player player, int runda) {
+    public static void saveGame(Player player, int runda, boolean showSaveMessage) {
         Save save = new Save();
         save.playerName = player.getName();
         save.className = player.getCharacterClass().getClassName();
@@ -23,7 +23,10 @@ public class SaveManager {
             FileWriter writer = new FileWriter("save.json");
             gson.toJson(save, writer);
             writer.close();
-            System.out.println("Gra została zapisana");
+            if(showSaveMessage) {
+                System.out.println("Gra została zapisana");
+            }
+
         } catch (Exception e) {
             System.out.println("Błąd zapisu");
         }

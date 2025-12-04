@@ -24,7 +24,6 @@ public class Combat {
                     UI.printCooldown(player);
                     continue;
                 }
-
                 int damage = player.specialAttack();
                 enemy.takeDamage(damage);
                 UI.print(player.getName() + " używa umiejętności specjalnej zadając "
