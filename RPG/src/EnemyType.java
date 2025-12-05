@@ -2,7 +2,7 @@ public enum EnemyType {
 
     GOBLIN("Goblin", 35, 15, 15),
     TROLL("Troll", 120, 25, 30),
-    GRYF("Gryf", 220, 45, 60);
+    GRYF("Gryf", 160, 45, 60);
 
 
     private String name;
