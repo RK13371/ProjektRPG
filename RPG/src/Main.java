@@ -16,7 +16,7 @@ public class Main {
 
         Map<String, ClassStats> stats = ConfigLoader.loadClassStats();
         if(stats == null) {
-            System.out.println("Błąd, nie znaleziono plik class_config.json");
+            System.out.println("Błąd, nie znaleziono pliku class_config.json");
             return;
         }
 
