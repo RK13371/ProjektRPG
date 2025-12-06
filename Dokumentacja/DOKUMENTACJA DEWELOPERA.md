@@ -6,41 +6,40 @@
 
 
 1. Struktura projektu:
-
-src/
-├── Main.java
-├── UI.java
-├── Player.java
-├── Combat.java
-├── Enemy.java
-├── EnemyType.java
-├── CharacterClass.java
-│ ├── Warrior.java
-│ ├── Archer.java
-│ └── Mage.java
-├── ClassStats.java
-├── Shop.java
-├── Item.java
-│ ├── HealingPotion.java
-│ ├── StrengthPotion.java
-│ └── LuckPotion.java
-├── Save.java
-├── SaveManager.java
-├── AutoSaveThread.java
-├── ConfigLoader.java
-test/
-├── PlayerGoldTest.java
-├── PlayerXPTest.java
-├── EnemyDamageTest.java
-├── SpecialAbilityTest.java
-├── SaveLoadTest.java
-├── PlayerInventoryTest.java
-resources/
-├── save.json
-├── class_config.json
-
-
-2. Klasy
+```
+  src/
+  ├── Main.java
+  ├── UI.java
+  ├── Player.java
+  ├── Combat.java
+  ├── Enemy.java
+  ├── EnemyType.java
+  ├── CharacterClass.java
+  │ ├── Warrior.java
+  │ ├── Archer.java
+  │ └── Mage.java
+  ├── ClassStats.java
+  ├── Shop.java
+  ├── Item.java
+  │ ├── HealingPotion.java
+  │ ├── StrengthPotion.java
+  │ └── LuckPotion.java
+  ├── Save.java
+  ├── SaveManager.java
+  ├── AutoSaveThread.java
+  ├── ConfigLoader.java
+  test/
+  ├── PlayerGoldTest.java
+  ├── PlayerXPTest.java
+  ├── EnemyDamageTest.java
+  ├── SpecialAbilityTest.java
+  ├── SaveLoadTest.java
+  ├── PlayerInventoryTest.java
+  resources/
+  ├── save.json  
+  ├── class_config.json
+```
+3. Klasy
 
 #Main:
  - Główna pętla gry
