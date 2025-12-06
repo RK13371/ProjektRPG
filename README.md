@@ -124,7 +124,14 @@
     - Biblioteka GSON
     - JUnit 4
 
- 8. Autor
+ 8. Diagramy
+
+    <img width="564" height="907" alt="UseCase drawio" src="https://github.com/user-attachments/assets/cbe0620d-e2c1-4f85-9711-0147fe024bf9" />
+    
+    <img width="711" height="1011" alt="Diagram stanów drawio" src="https://github.com/user-attachments/assets/02010a48-b8a7-4dd7-948a-88b33868930c" />
+
+
+ 10. Autor
     Filip Rutkowski
     Projekt zaliczeniowy
     Programowanie Obiektowe
