@@ -5,7 +5,6 @@
 ### Biblioteki: GSON (zapis/odczyt JSON), JUnit (testy jednostkowe)
 
 
-
 1. Struktura projektu:
 
 src/
