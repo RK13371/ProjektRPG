@@ -23,39 +23,39 @@
   
 4. Funkcjonalność
 
-    #Tworzenie postaci
+    Tworzenie postaci
      - Wybór imienia
      - Wybór klasy: Wojownik, Łucznik, Mag
        Każda klasa posiada inne statystyki i umiejętność specjalną
 
-    # Walka
+   Walka
      - System turowy
      - Atak podstawowy
      - Umiejętność specjalna (dostępna co 3 tury)
      - Używanie przedmiotów z ekwipunku
   
-    # Po wygranej walce
+   Po wygranej walce
      - Zdobycie punktów doświadczenia (XP)
      - Awans na kolejny poziom (jeśli został przebity próg poziomu)
      - Zdobycie złota
      - Losowa szansa na zdobycie przedmiotu
   
-    # Sklep
+   Sklep
       - Możliwość zakupienia przedmiotów
         - Mikstura leczenia (+40 HP)
         - Mikstura siły (+15 DMG)
         - Mikstura szczęście (Reset cooldownu umiejętności specjalnej)
        
-   # Ekwipunek
+   Ekwipunek
      - Przedmioty przechowywane przy użyciu map (nazwa -> ilość)
      - Użycie przedmiotów z ekwipunku podczas walki
   
-   # Zapis
+   Zapis
      - Ręczny zapis: pytanie o zapisanie rozgrywki po każdej walce
      - Automatyczny zapis: wykonuje się w tle przez osobny wątek co X sekund
      - Dane zapisaywane do pliku save.json
   
-   # Wczytywanie gry
+   Wczytywanie gry
      - Przy rozpoczęciu rozgrywki jest możliwość wczytania stanu gry z ostatnio wykonanego zapisu
 
  5. Struktura projektu
@@ -110,7 +110,7 @@
     }
 
 
-  6. Unit testy
+ 6. Unit testy
 
      Zaimplementowane są Unit Testy przy użyciu JUnit:
      - test wydania, otrzymania złota i sprawdzenie działania ograniczenia
