@@ -59,42 +59,42 @@
      - Przy rozpoczęciu rozgrywki jest możliwość wczytania stanu gry z ostatnio wykonanego zapisu
 
  5. Struktura projektu
-
+    
           src/
-       ├── Main.java
-       ├── UI.java
-       ├── Player.java
-       ├── Combat.java
-       ├── Enemy.java
-       ├── EnemyType.java
-       ├── CharacterClass.java
-       │    ├── Warrior.java
-       │    ├── Archer.java
-       │    └── Mage.java
-       ├── Item.java
-       │    ├── HealingPotion.java
-       │    ├── StrengthPotion.java
-       │    └── LuckPotion.java
-       ├── Shop.java
-       ├── ClassStats.java
-       ├── ConfigLoader.java
-       ├── Save.java
-       ├── SaveManager.java
-       ├── AutoSaveThread.java
+          ├── Main.java
+          ├── UI.java
+          ├── Player.java
+          ├── Combat.java
+          ├── Enemy.java
+          ├── EnemyType.java
+          ├── CharacterClass.java
+          │    ├── Warrior.java
+          │    ├── Archer.java
+          │    └── Mage.java
+          ├── Item.java
+          │    ├── HealingPotion.java
+          │    ├── StrengthPotion.java
+          │    └── LuckPotion.java
+          ├── Shop.java
+          ├── ClassStats.java
+          ├── ConfigLoader.java
+          ├── Save.java
+          ├── SaveManager.java
+          ├── AutoSaveThread.java
+
+         test/
+          ├── PlayerGoldTest.java
+          ├── PlayerXPTest.java
+          ├── EnemyDamageTest.java
+          ├── SpecialAbilityTest.java
+          └── SaveLoadTest.java
+    
+         save.json
+         class_config.json
       
-      test/
-       ├── PlayerGoldTest.java
-       ├── PlayerXPTest.java
-       ├── EnemyDamageTest.java
-       ├── SpecialAbilityTest.java
-       └── SaveLoadTest.java
-      
-      save.json
-      class_config.json
 
 
-
-  6. Przykład formatu zapisu do pliku save.json
+  7. Przykład formatu zapisu do pliku save.json
 
     {
       "playerName": "Filip",
@@ -128,6 +128,7 @@
     Filip Rutkowski
     Projekt zaliczeniowy
     Programowanie Obiektowe
+    
 
 
    
