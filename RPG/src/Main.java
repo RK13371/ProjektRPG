@@ -15,12 +15,28 @@ public class Main {
         int menuChoice = 0;
 
         Map<String, ClassStats> stats = ConfigLoader.loadClassStats();
+        if(stats == null) {
+            System.out.println("Błąd, nie znaleziono plik class_config.json");
+            return;
+        }
 
-        System.out.println("1. Nowa gra");
-        System.out.println("2. Wczytaj grę");
+        while(true) {
+            System.out.println("1. Nowa gra");
+            System.out.println("2. Wczytaj grę");
 
-        menuChoice = scanner.nextInt();
-        scanner.nextLine();
+            try {
+                menuChoice = scanner.nextInt();
+                scanner.nextLine();
+
+                if(menuChoice == 1 || menuChoice == 2) {
+                    break;
+                }
+                System.out.println("Zły wybór");
+            } catch (Exception e) {
+                System.out.println("Zły wybór");
+                scanner.nextLine();
+            }
+        }
 
         if(menuChoice == 2) {
             player = SaveManager.loadPlayer();
@@ -32,17 +48,31 @@ public class Main {
         }
 
         if(player == null) {
+            int klasa;
 
             System.out.print("Podaj imie gracza: ");
             String name = scanner.nextLine();
 
-            System.out.println("Wybierz klase postaci:");
-            System.out.println("1. Wojownik (HP: 120, DMG: 30)");
-            System.out.println("2. Łucznik (HP: 60, DMG: 35)");
-            System.out.println("3. Mag (HP: 70 , DMG: 40)");
+            while(true) {
+                System.out.println("Wybierz klase postaci:");
+                System.out.println("1. Wojownik (HP: 120, DMG: 30)");
+                System.out.println("2. Łucznik (HP: 60, DMG: 35)");
+                System.out.println("3. Mag (HP: 70 , DMG: 40)");
 
-            int klasa = scanner.nextInt();
-            scanner.nextLine();
+                try{
+                    klasa = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if(klasa >= 1 && klasa <= 3) {
+                        break;
+                    } else {
+                        System.out.println("Zły wybór");
+                    }
+                } catch(Exception e) {
+                    System.out.println("Zły wybór");
+                    scanner.nextLine();
+                }
+            }
 
             CharacterClass characterClass;
 
@@ -84,7 +114,7 @@ public class Main {
 
             if(!player.isAlive()) {
                 System.out.println("\n" + player.getName() + " został pokonany");
-                if(autosave != null) autosave.stopAutosave();;
+                if(autosave != null) autosave.stopAutosave();
                 break;
             }
 
