@@ -5,7 +5,7 @@
 
    Projekt obejmuje konsolową grę RPG, w której gracz tworzy swoją postać, walczy z przeciwnikami,
    zdobywa poziomy, przedmioty, które trafiają do ekwipunku i złoto.
-   System walki jest w postaci turowej, każda postać ma mechanikę swojej własnej umiejętności specjalnej
+   System walki jest w formie turowej, każda postać ma mechanikę swojej własnej umiejętności specjalnej
    zależnej od wybranej klasy. Zaimplementowana jest mechanika zapisu gry, w tym automatycznego zapisu.
 
    Wykorzystano:
