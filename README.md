@@ -2,6 +2,7 @@
 # Tekstowa Gra RPG
 
 1. Opis
+
    Projekt obejmuje konsolową grę RPG, w której gracz tworzy swoją postać, walczy z przeciwnikami,
    zdobywa poziomy, przedmioty, które trafiają do ekwipunku i złoto.
    System walki jest w postaci turowej, każda postać ma mechanikę swojej własnej umiejętności specjalnej
@@ -16,11 +17,11 @@
    - zapis/odczyt do/z pliku JSON (GSON)
    - asynchroniczność
 
-2. Wymagane do uruchomienia
+3. Wymagane do uruchomienia
    - Projekt jest stworzony przy użyciu Java 25
    - Wykorzystana jest biblioteka zewnętrzena GSON (gson-2.10.1)
   
-3. Funkcjonalność
+4. Funkcjonalność
 
     #Tworzenie postaci
      - Wybór imienia
@@ -57,7 +58,7 @@
    # Wczytywanie gry
      - Przy rozpoczęciu rozgrywki jest możliwość wczytania stanu gry z ostatnio wykonanego zapisu
 
- 4. Struktura projektu
+ 5. Struktura projektu
 
           src/
        ├── Main.java
@@ -93,7 +94,7 @@
 
 
 
-  5. Przykład formatu zapisu do pliku save.json
+  6. Przykład formatu zapisu do pliku save.json
 
     {
       "playerName": "Filip",
